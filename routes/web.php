@@ -7,6 +7,7 @@ use Symfony\Component\Routing\Route as RoutingRoute;
 
 use App\Http\Livewire\CourseStatus;
 
+use App\Http\Livewire\CourseMiscursos;
 /*
 |--------------------------------------------------------------------------
 | Web Routes
@@ -31,3 +32,7 @@ Route::get('/cursos/{course}', [CourseController::class, 'show'])->name('courses
 Route::post('courses/{course}/enrolled', [CourseController::class, 'enrolled'])->middleware('auth')->name('courses.enrolled');
 
 Route::get('/course-status/{course}', CourseStatus::class)->name('courses.status')->middleware('auth');
+
+// Route::get('/course-miscursos{course}', [CourseMiscursos::class])->name('courses.miscursos')->middleware('auth');
+
+Route::get('/course-miscursos',[CourseController::class, 'miscursos'])->name('courses.miscursos');
