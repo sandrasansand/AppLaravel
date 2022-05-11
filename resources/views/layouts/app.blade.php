@@ -1,5 +1,5 @@
 <!DOCTYPE html>
-<html lang="{{ str_replace('_', '-', app()->getLocale()) }}">
+<html lang="{{ str_replace('_', '-', app()->getLocale()) }}" class="scroll-smooth">
 
 <head>
     <meta charset="utf-8">
@@ -22,7 +22,7 @@
     <script src="{{ mix('js/app.js') }}" defer></script>
 </head>
 
-<body class="font-sans antialiased">
+<body class="font-garmond">
     <x-jet-banner />
 
     <div class="min-h-screen bg-gray-100">
@@ -37,6 +37,8 @@
         </main>
     </div>
 
+    @stack('modals')
+    @stack('modals')
     @stack('modals')
 
     @livewireScripts
