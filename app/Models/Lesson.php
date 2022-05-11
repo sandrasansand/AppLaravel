@@ -24,7 +24,7 @@ class Lesson extends Model
     }
     public function platform()
     {
-        $this->belongsTo('App\Models\Platform');
+        return $this->belongsTo('App\Models\Platform');
     }
 
     //rel 1:1 

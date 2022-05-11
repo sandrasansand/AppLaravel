@@ -4,7 +4,7 @@ namespace App\Models;
 
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
-
+use Illuminate\Database\Eloquent\Relations\HasOne;
 
 class Course extends Model
 {
@@ -44,6 +44,12 @@ class Course extends Model
     {
         return 'slug';
     }
+
+//rel 1:1
+public function observation(){
+    return $this->HasOne('App\Models\Observation');
+}
+
 
     //rel 1:n inversa
     public function teachers()
