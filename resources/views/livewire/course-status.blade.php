@@ -1,5 +1,5 @@
 <div class="mt-8">
-    <div class="container grid grid-cols-1 lg:grid-cols-3 gap-8">
+    <div class="container grid grid-cols-1 lg:grid-cols-3 gap-8 font-garmond">
         <div class="lg:col-span-2">
             <div class="embed-responsive">
                 {!! $current->iframe !!}
@@ -9,22 +9,35 @@
                 <div class="text-gray-600">{{ $current->description->name }}</div>
             @endif
 
-            <div class="flex items-center mt-4 cursor-pointer" wire:click="completed">
-                @if ($current->completed)
-                    <i class="fas fa-toggle-on text-2xl text-green-600"></i>
-                @else
-                    <i class="fas fa-toggle-off text-2xl text-gray-600"></i>
-                @endif
-                <p class="text-sm ml-2">Marcar como finalizada la unidad.</p>
+
+            <div class="flex justify-between mt-4 ">
+                <div class="flex items-center cursor-pointer" wire:click="completed">
+                    @if ($current->completed)
+                        <i class="fas fa-toggle-on text-2xl text-green-600"></i>
+                    @else
+                        <i class="fas fa-toggle-off text-2xl text-gray-600"></i>
+                    @endif
+                    <p class="text-sm ml-2">Finalizar la unidad.</p>
+                </div>
+
+                @if ($current->resource) 
+                    <div class="flext items-center text-gray-600 cursor-pointer" wire:click="download">
+                        <i class="fas fa-download text-lg"></i>
+                        <p class="text-sm ml-2">Descargar recursos</p>
+                    </div>
+                    @endif
             </div>
 
+
             <div class="card mt-2">
-                <div class="card-body flex font-bold text-gray-600">
+                <div class="card-body flex font-bold text-gray-600 shadow">
                     @if ($this->previous)
-                        <a wire:click="changeLesson({{ $this->previous }})" class="cursor-pointer hover:text-blue-500">Unidad anterior</a>
+                        <a wire:click="changeLesson({{ $this->previous }})"
+                            class="cursor-pointer hover:text-blue-500">Unidad anterior</a>
                     @endif
                     @if ($this->next)
-                        <a wire:click="changeLesson({{ $this->next }})" class="ml-auto cursor-pointer hover:text-blue-500">Siguiente
+                        <a wire:click="changeLesson({{ $this->next }})"
+                            class="ml-auto cursor-pointer hover:text-blue-500">Siguiente
                             unidad</a>
                     @endif
 
@@ -36,7 +49,8 @@
 
         <div class="card">
             <div class="card-body">
-                <h1 class="text-2xl text-center text-gray-700 leading-8 mb-4">{{ $course->title }}</h1>
+                <h1 class="text-2xl text-center text-gray-700 hover:text-yellow-600 leading-8 mb-4">
+                    {{ $course->title }}</h1>
 
                 <div class="flex items-center">
                     <figure>
@@ -61,7 +75,8 @@
                 <ul>
                     @foreach ($course->sections as $section)
                         <li class="text-gray-600 mb-4">
-                            <a class="font-bold text-base inline-block mb-2">{{ $section->name }}</a>
+                            <a
+                                class="font-bold text-base inline-block mb-2 hover:text-blue-700">{{ $section->name }}</a>
 
                             <ul>
                                 @foreach ($section->lessons as $lesson)
@@ -87,7 +102,6 @@
                                                         class="inline-block w-4 h-4 bg-slate-500 rounded-full mr-2 mt-1">
                                                     </span>
                                                 @endif
-
                                             @endif
 
                                         </div>
@@ -95,7 +109,6 @@
                                         <a class="cursor-pointer hover:text-blue-600"
                                             wire:click="changeLesson({{ $lesson }})">{{ $lesson->name }}</a>
                                     </li>
-
                                 @endforeach
                             </ul>
                         </li>
