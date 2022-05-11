@@ -11,11 +11,49 @@
                 </article>
                 <div class="flex justify-end mt-2 mb-4">
                     <a class="btn btn-primary" href="{{route('payment.pay',$course)}}">Comprar</a>
+                    
                 </div>
-
+                <div class="flex justify-center items-center w-4/6 mt-2 mb-4 "
+                 id="paypal-button-container"></div>
                 <hr>
                <p class="text-sm mt-4"> Lorem ipsum dolor sit amet consectetur adipisicing elit. Numquam quis cupiditate, inventore distinctio ea, magnam a fugit earum ad fugiat similique vero quasi! Expedita enim dolorem, consectetur amet odit ducimus?<a class="text-red-400 font-bold" href="">Términos y condiciones</a></p>
             </div>
         </div>
     </div>
-</x-app-layout>
+      <!-- Replace "test" with your own sandbox Business account app client ID -->
+      <script src="https://www.paypal.com/sdk/js?client-id={{config('services.paypal.client_id')}}"></script>
+      {{-- <script src="https://www.paypal.com/sdk/js?client-id=YOUR_CLIENT_ID"></script> --}}
+      
+      <script>
+        // Render the PayPal button into #paypal-button-container
+        paypal.Buttons({
+    
+            // Set up the transaction
+            createOrder: function(data, actions) {
+                return actions.order.create({
+                    purchase_units: [{
+                        amount: {
+                            value: '0.01'
+                        }
+                    }]
+                });
+            },
+    
+            // Finalize the transaction
+            onApprove: function(data, actions) {
+                return actions.order.capture().then(function(details) {
+                    // Show a success message to the buyer
+                    alert('Transaction completed by ' + details.payer.name.given_name + '!');
+                });
+            },
+    
+            //Changes credit/debit button behavior to "old" version
+            onShippingChange: function(data,actions){
+                //if not needed do nothing..
+                return actions.resolve();
+            }
+    
+    
+        }).render('#paypal-button-container');
+    </script>
+    </x-app-layout>
