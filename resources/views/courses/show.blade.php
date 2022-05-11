@@ -18,6 +18,7 @@
 
     <div class="container grid grid-cols-1 lg:grid-cols-3 gap-6">
         <div class="order-2 lg:col-span-2 lg:order-1">
+            {{-- objetivos --}}
             <section class="card mb-12">
                 <div class="card-body">
                     <h1 class="font-bold text-2xl mb-2">Lo que aprenderás</h1>
@@ -29,33 +30,29 @@
                     </ul>
                 </div>
             </section>
-
+            {{-- temario --}}
             <section class="mb-12">
                 <h1 class="font-bold text-3xl mb-2">Temario</h1>
 
                 @foreach ($course->sections as $section)
-                    <article class="mb-4 shadow" @if ($loop->first)
-                        x-data={open:true}
+                    <article class="mb-4 shadow"
+                        @if ($loop->first) x-data={open:true}
                     @else
-                        x-data={open:false}
-                @endif>
-                <header class="border border-gray-200 px-4 py-2 cursor-pointer bg-gray-200" x-on:click='open = !open'>
-                    <h1 class="font-bold text-lg text-gray-600">{{ $section->name }}</h1>
-                </header>
-                <div class="bg-white py-2 px-4" x-show='open'>
-                    <ul class="grid grid-cols-1 gap-2">
-                        @foreach ($section->lessons as $lesson)
+                        x-data={open:false} @endif>
+                        <header class="border border-gray-200 px-4 py-2 cursor-pointer bg-gray-200"
+                            x-on:click='open = !open'>
+                            <h1 class="font-bold text-lg text-gray-600">{{ $section->name }}</h1>
+                        </header>
+                        <div class="bg-white py-2 px-4" x-show='open'>
+                            <ul class="grid grid-cols-1 gap-2">
+                                @foreach ($section->lessons as $lesson)
+                                    <li class="text-gray text-base"> <i
+                                            class="fas fa-play-circle mr-2 text-gray-600"></i>{{ $lesson->name }}</li>
+                                @endforeach
+                            </ul>
 
-                            <li class="text-gray text-base"> <i
-                                    class="fas fa-play-circle mr-2 text-gray-600"></i>{{ $lesson->name }}</li>
-
-                        @endforeach
-                    </ul>
-
-                </div>
-                </article>
-
-
+                        </div>
+                    </article>
                 @endforeach
             </section>
             {{-- requerimientos --}}
@@ -64,18 +61,19 @@
                 <ul class="list-disc list-inside">
                     @foreach ($course->requirements as $requirement)
                         <li class="text-gray-700 text-base">{{ $requirement->name }}</li>
-
                     @endforeach
                 </ul>
             </section>
-
+            {{-- Descripcion --}}
             <section class="mb-8">
                 <h1 class="font-bold text-3xl">Descripción:</h1>
                 <div class="text-gray-700 text-base">
-                    {{ $course->description }}
+                    {!! $course->description !!}
 
                 </div>
             </section>
+
+            @livewire('courses-reviews', ['course' => $course])
 
         </div>
 
@@ -91,14 +89,21 @@
                                 href="">{{ '@' . Str::slug($course->teachers->name, '') }}</a>
                         </div>
                     </div>
-                   
+
                     @can('enrolled', $course)
-                        <a  class="btn btn-danger btn-block mt-4" href="{{route('courses.status', $course)}}">Continuar el curso</a>
+                        <a class="btn btn-danger btn-block mt-4" href="{{ route('courses.status', $course) }}">Continuar el
+                            curso</a>
                     @else
-                        <form action="{{route('courses.enrolled', $course)}}" method="post">
-                            @csrf
-                            <button type="submit" class="btn btn-danger btn-block mt-4">Entrar al curso</button>
-                        </form>
+                      @if ($course->price->value == 0)
+                      <p class="text-2xl font-garmond font-semibold text-green-500 mb-2">Gratis</p>
+                      <form action="{{ route('courses.enrolled', $course) }}" method="post">
+                        @csrf
+                        <button type="submit" class="btn btn-danger btn-block mt-4">Entrar al curso</button>
+                    </form>
+                      @else
+                      <p class="text-2xl font-garmond font-semibold text-gray-500 mb-2">{{$course->price->value}} €</p>
+                          <a href="{{route('payment.checkout', $course)}}" class="btn btn-danger btn-block mt-4">Comprar</a>
+                      @endif
                     @endcan
 
                 </div>
@@ -126,7 +131,6 @@
 
                         </div>
                     </article>
-
                 @endforeach
             </aside>
         </div>
