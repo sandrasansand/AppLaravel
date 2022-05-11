@@ -8,11 +8,21 @@ use Illuminate\Http\Request;
 use App\Models\Course;
 use App\Models\Level;
 use App\Models\Price;
-
+use Illuminate\Foundation\Auth\Access\AuthorizesRequests;
 use Illuminate\Support\Facades\Storage;
 
 class CourseController extends Controller
 {
+
+    public function __construct()
+    {
+        $this->middleware('can:Leer cursos')->only('index');
+        $this->middleware('can:Crear cursos')->only('create', 'store');
+        $this->middleware('can:Actualizar cursos')->only('edit', 'update', 'goals');
+        $this->middleware('can:Eliminar cursos')->only('destroy');
+    }
+
+    use AuthorizesRequests;
     /**
      * Display a listing of the resource.
      *
@@ -86,6 +96,8 @@ class CourseController extends Controller
      */
     public function edit(Course $course)
     {
+        $this->authorize('dicatated', $course); //capando ruta edit
+
         $categories = Category::pluck('name', 'id');
         $levels = Level::pluck('name', 'id');
         $prices = Price::pluck('name', 'id');
@@ -104,6 +116,7 @@ class CourseController extends Controller
      */
     public function update(Request $request, Course $course)
     {
+        $this->authorize('dicatated', $course); //capando ruta update
         //validar form
         $request->validate([
             'title' => 'required',
@@ -121,7 +134,7 @@ class CourseController extends Controller
             $url = Storage::put('public/courses', $request->file('file'));
 
             if ($course->image) {
-                Storage::delete($course->image->url); 
+                Storage::delete($course->image->url);
 
                 $course->image->update([
                     'url' => $url
@@ -144,5 +157,27 @@ class CourseController extends Controller
     public function destroy(Course $course)
     {
         //
+    }
+    public function goals(Course $course)
+    {
+        $this->authorize('dicatated', $course);
+        return view('instructor.courses.goals', compact('course'));
+    }
+
+
+    public function status(Course $course)
+    {
+        $course->status = 2;
+        $course->save();
+        if ($course->observation) {
+            $course->observation->delete();
+        }
+
+        return redirect()->route('instructor.courses.edit', $course);
+    }
+
+    public function observation(Course $course)
+    {
+        return view('instructor.courses.observation', compact('course'));
     }
 }
