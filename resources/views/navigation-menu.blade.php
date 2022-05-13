@@ -156,11 +156,15 @@ $nav_links = [
                                         Instructor
                                     </x-jet-dropdown-link>
                                 @endcan
+
+                                @auth                             
                                 {{-- añadir crear vista para cursos de un usuario enviar curso/user --}}
-                                <x-jet-dropdown-link href="{{ route('courses.miscursos') }}">
+                                <x-jet-dropdown-link href="{{ route('courses.miscursos', Auth::user()->id) }}">
                                     Mis Cursos
                                 </x-jet-dropdown-link>
+                                @endauth
 
+                                
                                 @if (Laravel\Jetstream\Jetstream::hasApiFeatures())
                                     <x-jet-dropdown-link href="{{ route('api-tokens.index') }}">
                                         {{ __('API Tokens') }}
