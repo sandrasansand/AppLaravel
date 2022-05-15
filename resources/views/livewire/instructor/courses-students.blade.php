@@ -1,16 +1,16 @@
-<div>
+<div class="mt-10">
     {{-- <x-slot name='course'>
         {{ $course->slug }}
     </x-slot> --}}
-    <h1 class="text-2xl font-bold mb-4">Estudiantes del Curso</h1>
+    <h1 class="text-2xl font-bold mb-4 mt-12">Estudiantes del Curso</h1>
 
     <x-table-responsive>
 
         <div class="px-6 py-4 flex">
-            <input  wire:model="search" class="form-input flex-1 rounded shadow-sm p-2"
+            <input wire:model="search" class="form-input flex-1 rounded shadow-sm p-2"
                 placeholder="Escriba el nombre de un curso..">
 
-         
+
         </div>
         @if ($students->count())
 
@@ -93,5 +93,6 @@
             </div>
         @endif
     </x-table-responsive>
-
+   
 </div>
+

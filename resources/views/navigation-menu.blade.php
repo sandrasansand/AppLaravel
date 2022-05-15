@@ -11,9 +11,9 @@ $nav_links = [
         'active' => request()->routeIs('courses.*'),
     ],
     //  [
-    //     'name' => 'Mis Cursos ',
-    //     'route'=> route('courses.miscursos'),
-    //     'active' => request()->routeIs('courses.*')
+    //     'name' => 'Sobre mi ',
+    //     'route'=> route('contact.myproject'),
+    //     'active' => request()->routeIs('contact.*')
     //  ],
 ];
 //fixed w-full
@@ -21,20 +21,20 @@ $nav_links = [
 
 <nav x-data="{ open: false }" class="bg-white border-b border-gray-100 shadow ">
     <!-- Primary Navigation Menu -->
-    <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+    <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 fixed top-0 w-full bg-slate-100"  id="myHeader">
         <div class="flex justify-between h-16">
             <div class="flex">
                 <!-- Logo -->
-                <div class="shrink-0 flex items-center">
-                    <a href="{{ route('home') }}">
-                        <x-jet-application-mark class="block h-9 w-auto" />
+                <div class="shrink-0 flex items-center ">
+                    <a class="" href="{{ route('home') }}">
+                        <x-jet-application-mark class="block h-9 w-14" />
                     </a>
                 </div>
 
                 <!-- Navigation Links -->
-                <div class="hidden space-x-8 sm:-my-px sm:ml-10 sm:flex text-blue-500 hover:text-blue-800">
+                <div class="hidden space-x-8 sm:-my-px sm:ml-10 sm:flex ">
                     @foreach ($nav_links as $nav_link)
-                        <x-jet-nav-link class="text-3xl" href="{{ $nav_link['route'] }}" :active="$nav_link['active']">
+                        <x-jet-nav-link class="text-3xl hover:bg-violet-600 hover:text-slate-100 hover:underline bg-slate-100 " href="{{ $nav_link['route'] }}" :active="$nav_link['active']">
                             {{ $nav_link['name'] }}
                         </x-jet-nav-link>
                     @endforeach
@@ -185,10 +185,10 @@ $nav_links = [
                             </x-slot>
                         </x-jet-dropdown>
                     @else
-                        <a href="{{ route('login') }}" class="text-sm text-gray-700 dark:text-gray-500 underline">Log
+                        <a href="{{ route('login') }}" class="text-xl text-gray-700  hover:bg-violet-800 hover:text-slate-100 hover:underline bg-slate-100 ">Log
                             in</a>
                         <a href="{{ route('register') }}"
-                            class="ml-4 text-sm text-gray-700 dark:text-gray-500 underline">Register</a>
+                            class="ml-4 text-xl text-gray-700  hover:bg-violet-800 hover:text-slate-100 hover:underline bg-slate-100">Register</a>
                     @endauth
                 </div>
             </div>
@@ -255,6 +255,12 @@ $nav_links = [
                             Administrador
                         </x-jet-responsive-nav-link>
                     @endcan
+                    @auth                             
+                    {{-- añadir crear vista para cursos de un usuario enviar curso/user --}}
+                    <x-jet-responsive-nav-link href="{{ route('courses.miscursos', Auth::user()->id) }}">
+                        Mis Cursos
+                    </x-jet-responsive-nav-link>
+                    @endauth
 
                     @if (Laravel\Jetstream\Jetstream::hasApiFeatures())
                         <x-jet-responsive-nav-link href="{{ route('api-tokens.index') }}" :active="request()->routeIs('api-tokens.index')">
@@ -306,7 +312,7 @@ $nav_links = [
                 </div>
             </div>
         @else
-            <div class="py-1-border-t border-gray-200">
+            <div class="py-1-border-t text-2xl border-gray-400">
                 <x-jet-responsive-nav-link href="{{ route('login') }}" :active="request()->routeIs('login')">
                     Login
                 </x-jet-responsive-nav-link>

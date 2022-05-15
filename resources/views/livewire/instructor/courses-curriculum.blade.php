@@ -1,4 +1,4 @@
-<div>
+<div class="mt-10">
     {{-- <x-slot name="course">
         {{ $course->slug }}
     </x-slot> --}}

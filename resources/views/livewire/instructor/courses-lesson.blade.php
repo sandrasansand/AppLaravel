@@ -1,4 +1,4 @@
-<div class="font-garmond">
+<div class="font-garmond mt-10">
     @foreach ($section->lessons as $item)
 
         <article class="card mt-4" x-data="{open : false}">
@@ -134,4 +134,5 @@
             </div>
         </article>
     </div>
+    
 </div>

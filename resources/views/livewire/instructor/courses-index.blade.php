@@ -1,4 +1,4 @@
-<div class="container py-8 font-garmond">
+<div class="container py-8 font-garmond mt-12">
 
     <x-table-responsive>
 
