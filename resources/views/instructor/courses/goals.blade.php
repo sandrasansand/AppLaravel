@@ -12,4 +12,6 @@
     <div>
         @livewire('instructor.courses-audiences', ['course' => $course], key('courses-audiences'. $course->id))
     </div>
+    
 </x-instructor-layout>
+{{-- @include('components.footer') --}}

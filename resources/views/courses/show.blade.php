@@ -135,5 +135,5 @@
             </aside>
         </div>
     </div>
-    @include('components.footer')
+    {{-- @include('components.footer') --}}
 </x-app-layout>

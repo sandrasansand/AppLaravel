@@ -36,3 +36,5 @@ Route::get('/course-status/{course}', CourseStatus::class)->name('courses.status
 // Route::get('/course-miscursos{course}', [CourseMiscursos::class])->name('courses.miscursos')->middleware('auth');
 
 Route::get('/course-miscursos',[CourseController::class, 'miscursos'])->name('courses.miscursos')->middleware('auth');
+
+// Route::get('contact', [CourseController::class, 'index' ])->name('contact.index');

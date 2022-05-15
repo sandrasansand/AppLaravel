@@ -1,4 +1,4 @@
-<div class="max-w-7xl mx-auto sm:px-6 lg:px-8 px-6 pt-12">
+<div class="max-w-7xl mx-auto sm:px-6 lg:px-8 px-6 pt-12 mt-10">
    <h1 class="text-2xl font-semibold mb-4">Mis cursos matriculados</h1>
 
                    

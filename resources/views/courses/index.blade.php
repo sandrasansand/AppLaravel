@@ -13,5 +13,5 @@
     </section>
 
     @livewire('courses-index')
-    @include('components.footer')
+    {{-- @include('components.footer') --}}
 </x-app-layout>

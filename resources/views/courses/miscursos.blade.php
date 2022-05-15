@@ -1,6 +1,6 @@
 <x-app-layout>
     {{-- @livewire('course-miscursos') --}}
-    <div class="max-w-7xl mx-auto sm:px-6 lg:px-8 px-6 pt-12 pb-12">
+    <div class="max-w-7xl mx-auto sm:px-6 lg:px-8 px-6 pt-12 pb-12 mt-10">
         <h1 class="text-2xl font-semibold mb-4 text-gray-800">Mis cursos matriculados</h1>
 
         <ul class="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-6">
@@ -27,5 +27,4 @@
         </ul>
        
     </div>
-    @include('components.footer')
 </x-app-layout>

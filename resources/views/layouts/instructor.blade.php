@@ -120,5 +120,5 @@ border-transparent @endif hover:text-amber-500 pl-2  ">
         {{ $js }}
     @endisset
 </body>
-
+@include('components.footer')
 </html>

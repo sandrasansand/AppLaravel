@@ -1,4 +1,4 @@
-<x-instructor-layout :course="$course"> 
+<x-instructor-layout :course="$course" > 
     {{-- <x-slot name="course">
         {{$course->slug}}
     </x-slot> --}}
@@ -6,7 +6,7 @@
 
 
 
-        <h1 class="font-bold text-2xl uppercase">Información del Curso</h1>
+        <h1 class="font-bold text-2xl uppercase mt-12">Información del Curso</h1>
         <hr class="mt-2 mb-6">
 
         {!! Form::model($course, ['route' => ['instructor.courses.update', $course], 'method' => 'put', 'files' => true]) !!}
@@ -26,3 +26,4 @@
         </script>
     </x-slot>
 </x-instructor-layout>
+{{-- @include('components.footer') --}}
