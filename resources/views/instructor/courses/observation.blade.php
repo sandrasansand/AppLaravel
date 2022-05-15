@@ -6,3 +6,4 @@
         {!!$course->observation->body!!}
     </div>
 </x-instructor-layout>
+

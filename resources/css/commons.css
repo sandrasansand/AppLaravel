@@ -52,3 +52,10 @@
 .card1:hover {
     transform: scale(1.1);
 }
+/* scroll header fijo */
+.sticky {
+	position: fixed !important;
+	top: 0;
+	width: 100%;
+	z-index: 100;
+}
