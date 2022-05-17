@@ -6,7 +6,7 @@ use App\Http\Controllers\Instructor\CourseController;
 use App\Http\Livewire\Instructor\CoursesCurriculum;
 use App\Http\Livewire\Instructor\CoursesStudents;
 
-Route::redirect('', 'instructor/courses');
+//Route::redirect('', 'instructor/courses');
 // Route::get('courses', InstructorCourses::class)->middleware('can:Leer cursos')->name('courses.index');
 
 Route::resource('courses', CourseController::class)->names('courses');
