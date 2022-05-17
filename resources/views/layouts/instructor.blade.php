@@ -38,39 +38,40 @@
                 <h1 class="font-bold text-2xl mb-4">Edición del curso</h1>
                 <ul class="text-lg text-gray-600 mb-4">
                     <li
-                        class="leding-7 mb-1 border-l-4 @routeIs('instructor.courses.edit',$course) border-indigo-400
+                        class="leding-7 mb-1 border-l-4 @routeIs('instructor.courses.edit', $course) border-indigo-400
 @else
 border-transparent @endif hover:text-amber-500 pl-2 ">
                         <a href="{{ route('instructor.courses.edit', $course) }}">Información</a>
                     </li>
-                    <li class="leding-7 mb-1 border-l-4 @routeIs('instructor.courses.curriculum',$course) border-indigo-400
+                    <li class="leding-7 mb-1 border-l-4 @routeIs('instructor.courses.curriculum', $course) border-indigo-400
 @else
 border-transparent @endif hover:text-amber-500 pl-2 "
                         class="leding-7">
                         <a href="{{ route('instructor.courses.curriculum', $course) }}">Lecciones</a>
                     </li>
                     <li
-                        class="leding-7 mb-1 border-l-4 @routeIs('instructor.courses.goals',$course) border-indigo-400
+                        class="leding-7 mb-1 border-l-4 @routeIs('instructor.courses.goals', $course) border-indigo-400
 @else
 border-transparent @endif hover:text-amber-500 pl-2 ">
                         <a href="{{ route('instructor.courses.goals', $course) }}">Objetivos</a>
                     </li>
                     <li
-                        class="leding-7 mb-1 border-l-4 @routeIs('instructor.courses.students',$course) border-indigo-400
+                        class="leding-7 mb-1 border-l-4 @routeIs('instructor.courses.students', $course) border-indigo-400
 @else
 border-transparent @endif hover:text-amber-500 pl-2  ">
                         <a href="{{ route('instructor.courses.students', $course) }}">Estudiantes</a>
                     </li>
-               
-                <li class="leding-7 mb-1 border-l-4 @routeIs('instructor.courses.observation',$course) border-indigo-400
+
+                    <li
+                        class="leding-7 mb-1 border-l-4 @routeIs('instructor.courses.observation', $course) border-indigo-400
 @else
 border-transparent @endif hover:text-amber-500 pl-2  ">
-                    @if ($course->observation)
-                        <a href="{{ route('instructor.courses.observation', $course) }}">Observaciones</a>
-                </li>
-            </ul>
+                        @if ($course->observation)
+                            <a href="{{ route('instructor.courses.observation', $course) }}">Observaciones</a>
+                    </li>
+                </ul>
                 @endif
-                
+
                 @switch($course->status)
                     @case(1)
                         <form action="{{ route('instructor.courses.status', $course) }}" method="POST">
@@ -121,4 +122,5 @@ border-transparent @endif hover:text-amber-500 pl-2  ">
     @endisset
 </body>
 @include('components.footer')
+
 </html>
