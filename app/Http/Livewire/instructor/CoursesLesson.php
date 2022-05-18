@@ -59,6 +59,7 @@ class CoursesLesson extends Component
     {
         $this->resetValidation();
         $this->lesson = $lesson;
+        $this->lesson->save();
     }
 
     public function update()

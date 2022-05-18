@@ -41,6 +41,7 @@ class CoursesRequirements extends Component
     public function edit(Requirement $requirement)
     {
         $this->requirement = $requirement;
+        $this->requirement->save();
     }
 
     public function update()

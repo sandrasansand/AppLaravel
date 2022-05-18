@@ -83,7 +83,7 @@ border-transparent @endif hover:text-amber-500 pl-2  ">
                     @case(2)
                         <div class="card text-gray-500">
                             <div class="card-body">
-                                Este curso se encuentra en el estado Revisión
+                                Este curso se encuentra en el estado Revisión por parte del administrador
                             </div>
                         </div>
                     @break
