@@ -60,8 +60,8 @@ class RouteServiceProvider extends ServiceProvider
                 ->prefix('instructor')
                 ->namespace($this->namespace)
                 ->group(base_path('routes/instructor.php'));
-              //payment 
-             Route::middleware('web', 'auth')
+            //payment 
+            Route::middleware('web', 'auth')
                 ->name('payment.')
                 ->prefix('payment')
                 ->namespace($this->namespace)
