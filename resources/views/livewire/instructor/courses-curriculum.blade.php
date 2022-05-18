@@ -7,7 +7,7 @@
     <hr class="mb-6 mt-2">
 
     @foreach ($course->sections as $item)
-        <article class="card mb-6" x-data="{open : true}">
+        <article class="card mb-6" x-data="{ open: true }">
             <div class="card-body bg-gray-100">
 
                 @if ($section->id == $item->id)
@@ -18,10 +18,10 @@
                             <span class="text-xs text-red-500">{{ $message }}</span>
                         @enderror
                     </form>
-
                 @else
                     <header class="flex justify-between text-center">
-                        <h1 x-on:click="open = !open" class="cursor-pointer"><strong>Sección:</strong> {{ $item->name }}</h1>
+                        <h1 x-on:click="open = !open" class="cursor-pointer"><strong>Sección:</strong>
+                            {{ $item->name }}</h1>
 
                         <div>
                             <i class="fas fa-edit cursor-pointer hover:text-blue-500"
@@ -35,13 +35,12 @@
                     <div x-show="open">
                         @livewire('instructor.courses-lesson', ['section' => $item], key($item->id))
                     </div>
-
                 @endif
             </div>
         </article>
     @endforeach
 
-    <div x-data="{open:false}">
+    <div x-data="{ open: false }">
         <a x-show="!open" x-on:click="open = true" class="flex items-center cursor-pointer">
             <i class="far fa-plus-square text-2xl text-red-500 mr-2"></i>
             Añadir nueva sección
