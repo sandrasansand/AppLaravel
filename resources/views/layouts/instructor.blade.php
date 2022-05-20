@@ -32,7 +32,8 @@
 
 
         <!-- Page Content -->
-        <div class="container py-8 grid grid-cols-5 gap-6 font-garmond">
+        <div class="container py-8 grid grid-cols-5 md:grid-cols-1 gap-6 font-garmond mt-10">
+
 
             <aside>
                 <h1 class="font-bold text-2xl mb-4">Edición del curso</h1>

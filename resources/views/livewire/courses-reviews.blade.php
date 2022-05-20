@@ -1,5 +1,5 @@
-<section>
-    <h1 class="font-bold text-3xl">Opiniones de nuestros usuarios:</h1>
+<section class="mb-10 mt-10">
+    <h1 class="font-bold text-3xl mb-2">Opiniones de nuestros usuarios:</h1>
 
     @can('enrolled', $course)
         <article>

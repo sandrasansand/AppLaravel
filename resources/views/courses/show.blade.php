@@ -1,5 +1,5 @@
 <x-app-layout>
-    <section class="bg-gray-700 py-12 mb-12">
+    <section class="bg-gray-700 py-12 mt-10">
         <div class="container grid grid-cols-1 lg:grid-cols-2 gap-6">
             <figure>
                 <img class="h-60 w-full object-cover" src="{{ Storage::url($course->image->url) }}" alt="">
@@ -19,7 +19,7 @@
     <div class="container grid grid-cols-1 lg:grid-cols-3 gap-6">
         <div class="order-2 lg:col-span-2 lg:order-1">
             {{-- objetivos --}}
-            <section class="card mb-12">
+            <section class="card mb-12 mt-10">
                 <div class="card-body">
                     <h1 class="font-bold text-2xl mb-2">Lo que aprenderás</h1>
                     <ul class="grid grid-cols-1 md:grid-cols-2 gap-x-6 gap-y-2">
@@ -56,8 +56,8 @@
                 @endforeach
             </section>
             {{-- requerimientos --}}
-            <section class="mb-8">
-                <h1 class="font-bold text-3xl">Requisitos:</h1>
+            <section class="mb-10">
+                <h1 class="font-bold text-3xl mb-2">Requisitos:</h1>
                 <ul class="list-disc list-inside">
                     @foreach ($course->requirements as $requirement)
                         <li class="text-gray-700 text-base">{{ $requirement->name }}</li>
@@ -65,8 +65,8 @@
                 </ul>
             </section>
             {{-- Descripcion --}}
-            <section class="mb-8">
-                <h1 class="font-bold text-3xl">Descripción:</h1>
+            <section class="mb-10">
+                <h1 class="font-bold text-3xl mb-2">Descripción:</h1>
                 <div class="text-gray-700 text-base">
                     {!! $course->description !!}
 
@@ -78,7 +78,7 @@
         </div>
 
         <div class="order-1 lg:order-2">
-            <section class="card mb-4">
+            <section class="card mb-4 mt-10">
                 <div class="card-body">
                     <div class="flex items-center">
                         <img class="h-12 w-12 object-cover rounded-full shadow-lg"

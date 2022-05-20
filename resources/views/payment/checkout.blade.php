@@ -1,5 +1,5 @@
 <x-app-layout>
-    <div class="max-w-4xl mx-auto sm:px-6 lg:px-8 py-12">
+    <div class="max-w-4xl mx-auto sm:px-6 lg:px-8 py-12 mt-10">
         <h1 class="text-gray-500 text-3xl font-garmond fony-bold">Detalle del Pedido</h1>
         <div class="card text-gray-600">
             <div class="card-body">
@@ -13,7 +13,7 @@
                     <a class="btn btn-primary" href="{{route('payment.pay',$course)}}">Comprar</a>
                     
                 </div>
-                <div class="flex justify-center items-center w-4/6 mt-2 mb-4 "
+                <div class="flex items-center w-4/6 mt-2 mb-4"
                  id="paypal-button-container"></div>
                 <hr>
                <p class="text-sm mt-4"> Lorem ipsum dolor sit amet consectetur adipisicing elit. Numquam quis cupiditate, inventore distinctio ea, magnam a fugit earum ad fugiat similique vero quasi! Expedita enim dolorem, consectetur amet odit ducimus?<a class="text-red-400 font-bold" href="">Términos y condiciones</a></p>
@@ -27,13 +27,13 @@
       <script>
         // Render the PayPal button into #paypal-button-container
         paypal.Buttons({
-    
+           
             // Set up the transaction
             createOrder: function(data, actions) {
                 return actions.order.create({
                     purchase_units: [{
                         amount: {
-                            value: '0.01'
+                            value: {{ $course->price->value }}
                         }
                     }]
                 });

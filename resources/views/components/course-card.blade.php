@@ -1,6 +1,6 @@
 @props(['course'])
 
-<article class="card1 cardEfect  efect:hover">
+<article class="card1 cardEfect  efect:hover mb-10">
     <img class="h-36 w-full object-cover" src=" {{ Storage::url($course->image->url) }}" alt="">
     <div class="card-body flex-1 flex-col">
         <h1 class="card-title">{{ Str::limit($course->title, 40) }}</h1>
