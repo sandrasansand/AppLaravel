@@ -1,4 +1,4 @@
-<div class="mt-8">
+<div class="mt-16">
     <div class="container grid grid-cols-1 lg:grid-cols-3 gap-8 font-garmond">
         <div class="lg:col-span-2">
             <div class="embed-responsive">
