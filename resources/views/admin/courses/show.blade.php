@@ -1,5 +1,5 @@
 <x-app-layout>
-    <section class="bg-gray-700 py-12 mb-12">
+    <section class="bg-gray-700 py-12 mt-16 mb-12">
         <div class="container grid grid-cols-1 lg:grid-cols-2 gap-6">
             <figure>
                 @if ($course->image)
@@ -92,8 +92,8 @@
                 @endforelse
             </section>
             {{-- requerimientos --}}
-            <section class="mb-8">
-                <h1 class="font-bold text-3xl">Requisitos:</h1>
+            <section class="mb-12">
+                <h1 class="font-bold text-3xl mb-2">Requisitos:</h1>
                 <ul class="list-disc list-inside">
                     @forelse ($course->requirements as $requirement)
                         <li class="text-gray-700 text-base">{{ $requirement->name }}</li>
@@ -104,8 +104,8 @@
                 </ul>
             </section>
 
-            <section class="mb-8">
-                <h1 class="font-bold text-3xl">Descripción:</h1>
+            <section class="mb-12">
+                <h1 class="font-bold text-3xl mb-2">Descripción:</h1>
                 <div class="text-gray-700 text-base">
                     {!! $course->description !!}
 
@@ -140,5 +140,5 @@
 
         </div>
     </div>
-    @include('components.footer')
+    {{-- @include('components.footer') --}}
 </x-app-layout>
