@@ -23,50 +23,37 @@
 </head>
 
 <body class="font-garmond">
-    <x-jet-banner />
+    {{-- <x-jet-banner /> --}}
 
-    <div class="min-h-screen bg-gray-100">
-        @livewire('navigation-menu')
-
-        <!-- Page Heading -->
-
+<div class="min-h-screen bg-gray-100">
+    @livewire('navigation-menu')
 
         <!-- Page Content -->
-        <div class="container py-8 grid grid-cols-5 md:grid-cols-1 gap-6 font-garmond mt-10">
+    <div class="container py-8 grid grid-cols-5 md:grid-cols-1 gap-6 font-garmond mt-10">
 
 
-            <aside>
+        <aside>
                 <h1 class="font-bold text-2xl mb-4">Edición del curso</h1>
                 <ul class="text-lg text-gray-600 mb-4">
                     <li
-                        class="leding-7 mb-1 border-l-4 @routeIs('instructor.courses.edit', $course) border-indigo-400
-@else
-border-transparent @endif hover:text-amber-500 pl-2 ">
+                        class="leding-7 mb-1 border-l-4 @routeIs('instructor.courses.edit', $course) border-indigo-400 @else border-transparent @endif hover:text-amber-500 pl-2 ">
                         <a href="{{ route('instructor.courses.edit', $course) }}">Información</a>
                     </li>
-                    <li class="leding-7 mb-1 border-l-4 @routeIs('instructor.courses.curriculum', $course) border-indigo-400
-@else
-border-transparent @endif hover:text-amber-500 pl-2 "
+                    <li class="leding-7 mb-1 border-l-4 @routeIs('instructor.courses.curriculum', $course) border-indigo-400 @else border-transparent @endif hover:text-amber-500 pl-2 "
                         class="leding-7">
                         <a href="{{ route('instructor.courses.curriculum', $course) }}">Lecciones</a>
                     </li>
                     <li
-                        class="leding-7 mb-1 border-l-4 @routeIs('instructor.courses.goals', $course) border-indigo-400
-@else
-border-transparent @endif hover:text-amber-500 pl-2 ">
+                        class="leding-7 mb-1 border-l-4 @routeIs('instructor.courses.goals', $course) border-indigo-400 @else border-transparent @endif hover:text-amber-500 pl-2 ">
                         <a href="{{ route('instructor.courses.goals', $course) }}">Objetivos</a>
                     </li>
                     <li
-                        class="leding-7 mb-1 border-l-4 @routeIs('instructor.courses.students', $course) border-indigo-400
-@else
-border-transparent @endif hover:text-amber-500 pl-2  ">
+                        class="leding-7 mb-1 border-l-4 @routeIs('instructor.courses.students', $course) border-indigo-400 @else border-transparent @endif hover:text-amber-500 pl-2  ">
                         <a href="{{ route('instructor.courses.students', $course) }}">Estudiantes</a>
                     </li>
 
                     <li
-                        class="leding-7 mb-1 border-l-4 @routeIs('instructor.courses.observation', $course) border-indigo-400
-@else
-border-transparent @endif hover:text-amber-500 pl-2  ">
+                        class="leding-7 mb-1 border-l-4 @routeIs('instructor.courses.observation', $course) border-indigo-400 @else border-transparent @endif hover:text-amber-500 pl-2  ">
                         @if ($course->observation)
                             <a href="{{ route('instructor.courses.observation', $course) }}">Observaciones</a>
                     </li>
@@ -101,26 +88,27 @@ border-transparent @endif hover:text-amber-500 pl-2  ">
                 @endswitch
 
 
-            </aside>
-            <div class="col-span-4 card">
-                <main class="card-body text-gray-600">
+        </aside>
+        <div class="col-span-4 card">
+            <main class="card-body text-gray-600">
                     {{ $slot }}
 
-                </main>
+            </main>
 
-            </div>
         </div>
     </div>
+</div>
 
-    @stack('modals')
-    @stack('modals')
-    @stack('modals')
+@stack('modals')
+@stack('modals')
+@stack('modals')
 
-    @livewireScripts
+@livewireScripts
 
-    @isset($js)
-        {{ $js }}
-    @endisset
+@isset($js)
+ {{ $js }}
+@endisset
+
 </body>
 @include('components.footer')
 
