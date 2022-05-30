@@ -131,7 +131,7 @@ class CourseController extends Controller
         $course->update($request->all());
         //imagen
         if ($request->file('file')) {
-            $url = Storage::put('public/courses', $request->file('file'));
+            $url = Storage::put('courses', $request->file('file'));
 
             if ($course->image) {
                 Storage::delete($course->image->url);
@@ -173,7 +173,7 @@ class CourseController extends Controller
             $course->observation->delete();
         }
 
-        return redirect()->route('instructor.courses.edit', $course);
+        return redirect()->route('instructor.courses.edit', $course); //$slot
     }
 
     public function observation(Course $course)
