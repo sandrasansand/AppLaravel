@@ -69,11 +69,17 @@ class CourseController extends Controller
         $course = Course::create($request->all());
         //public/cursos
         if ($request->file('file')) {
-            $url = Storage::put('public/courses', $request->file('file'));
+            $url = Storage::put('courses', $request->file('file')->getClientOriginalName()); //courses
+
+           // $imagen = $request->file('file');
+            // $ruta = asset("/storage");
+            // $ruta= public_path('public/storage/courses');
 
             $course->image()->create([
                 'url' => $url
             ]);
+
+            // $imagen->move($ruta, $url);
         }
         return redirect()->route('instructor.courses.edit', $course);
     }
@@ -131,7 +137,7 @@ class CourseController extends Controller
         $course->update($request->all());
         //imagen
         if ($request->file('file')) {
-            $url = Storage::put('courses', $request->file('file'));
+            $url = Storage::put('courses', $request->file('file')); //courses
 
             if ($course->image) {
                 Storage::delete($course->image->url);

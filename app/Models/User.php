@@ -26,7 +26,7 @@ class User extends Authenticatable
      *
      * @var string[]
      */
-    protected $fillable = [
+    protected $fillable = [  //habilitados para la asignación masiva
         'name',
         'email',
         'password',
@@ -88,7 +88,7 @@ class User extends Authenticatable
     //relacion n:m
     public function courses_enrolled()
     {
-        return $this->belongsTo('App\Models\Course');
+        return $this->belongsToMany('App\Models\Course'); //many change
     }
     public function lessons()
     {

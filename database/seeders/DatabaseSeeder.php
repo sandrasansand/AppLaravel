@@ -16,8 +16,8 @@ class DatabaseSeeder extends Seeder
     public function run()
 
     {
-        Storage::deleteDirectory('public/courses'); //borrar el directorio en la ruta correcta public\storage\cursos storage\app\cursos
-        Storage::makeDirectory('public/courses'); //mkdir en storage me lo crea en esta ruta C:\xampp\htdocs\app-cursos\storage\app\cursos
+        Storage::deleteDirectory('courses'); //borrar el directorio en la ruta correcta public\storage\cursos storage\app\cursos
+        Storage::makeDirectory('courses'); //mkdir en storage me lo crea en esta ruta C:\xampp\htdocs\app-cursos\storage\app\cursos
 
         // \App\Models\User::factory(10)->create();
         //llamada al seeder correspondiente 
