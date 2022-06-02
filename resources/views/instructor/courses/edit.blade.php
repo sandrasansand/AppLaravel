@@ -3,6 +3,9 @@
         {{$course->slug}}
     </x-slot> --}}
 
+
+
+
         <h1 class="font-bold text-2xl uppercase mt-12">Información del Curso</h1>
         <hr class="mt-2 mb-6">
 

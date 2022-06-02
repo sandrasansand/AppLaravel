@@ -50,10 +50,9 @@
 </div>
 <h1 class="text-2xl font-bold mt-8 mb-2">Imagen del curso</h1>
 <div class="grid grid-cols-2 gap-4">
-    {{--  --}}
     <figure>
         @isset($course->image)
-            <img id="picture" class="w-full h64 object-cover object-center" src="{{Storage::url($course->image->url)}}"
+            <img id="picture" class="w-full h64 object-cover object-center" src="{{ Storage::url($course->image->url) }}"
                 alt="">
         @else
             <img id="picture" class="w-full h64 object-cover object-center"
@@ -67,7 +66,6 @@
         {!! Form::file('file', ['class' => 'form-input w-full mt-4'. ($errors->has('file') ? ' border-red-600' : ''), 'id' => 'file', 'accept' => 'image/*']) !!}
         @error('file')
         <strong class="text-sm text-red-600">{{ $message }}</strong>
-        @enderror
+    @enderror
     </div>
-
 </div>

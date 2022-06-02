@@ -47,7 +47,7 @@
                                 <div class="flex items-center">
                                     <div class="flex-shrink-0 h-10 w-10">
                                         @isset($course->image)
-                                        {{-- img/{{$course->ruta}} --}}
+
                                             <img class="w-full h-full rounded-full object-cover object-center"
                                                 src="{{ Storage::url($course->image->url) }}" alt="" />
                                         @else

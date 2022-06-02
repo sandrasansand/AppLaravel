@@ -2,14 +2,13 @@
     <section class="bg-gray-700 py-12 mt-10">
         <div class="container grid grid-cols-1 lg:grid-cols-2 gap-6">
             <figure>
-                {{-- img/{{$course->ruta}} --}}
                 <img class="h-60 w-full object-cover" src="{{ Storage::url($course->image->url) }}" alt="">
             </figure>
             <div class="text-white">
                 <h1 class="text-4xl">{{ $course->title }}</h1>
                 <h2 class="text-xl mb-3">{{ $course->subtitle }}</h2>
                 <p class="mb-2"><i class="fas fa-chart-line mr-2"></i>Nivel: {{ $course->level->name }}</p>
-                <p class="mb-2"><i class="fas fa-chart-line mr-2"></i>Categoría: {{ $course->category->name }}</p>
+                <p class="mb-2"><i class=""></i>Categoría: {{ $course->category->name }}</p>
                 <p class="mb-2"><i class="fas fa-users mr-2"></i>Matriculados: {{ $course->students_count }}
                 </p>
                 <p><i class="fas fa-star mr-2"></i>Calificación: {{ $course->rating }}</p>

@@ -45,6 +45,6 @@ class LessonResources extends Component
 
     public function download()
     {
-        return response()->download(storage_path('app/public/' . $this->lesson->resource->url));
+        return response()->download(storage_path('app/' . $this->lesson->resource->url));
     }
 }
